@@ -11,6 +11,7 @@ public class Main {
 	static ArrayList<Integer>[] array;
 
 	public static void main(String[] args) throws IOException {
+		//input and setting
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer token = new StringTokenizer(br.readLine());
 		int n = Integer.parseInt(token.nextToken());
@@ -28,8 +29,9 @@ public class Main {
 			array[s].add(e);
 			array[e].add(s);
 		}
-
-		int result = 0;
+		
+		//solve
+		int result = 0; //=> Number of executions of executeDFS
 		for (int i = 1; i < n + 1; i++) {
 			if (!visited[i]) {
 				result++;
@@ -40,6 +42,7 @@ public class Main {
 
 	}
 
+	//DFS
 	private static void executeDFS(int i) {
 		if (visited[i]) {
 			return;
