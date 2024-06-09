@@ -28,7 +28,7 @@ public class Main {
 				}else if(board[i][j] == '.' || board[i][j] == '#' || board[i][j] == 'O') {
 					
 				}else {
-					j--; //retry
+					System.exit(-1); //exit
 				}
 			}
 
