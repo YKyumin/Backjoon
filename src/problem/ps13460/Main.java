@@ -49,16 +49,16 @@ public class Main {
 		int result = -1;
 
 		// TODO make solve source
-		result = executeBFS(rPos[0], rPos[1], bPos[0], bPos[1]);
+		result = executeBFS(rPos[0], rPos[1], bPos[0], bPos[1], 0);
 
 		System.out.println(result);
 	}
 
-	private static int executeBFS(int i, int j, int k, int l) {
+	private static int executeBFS(int i, int j, int k, int l, int mvCnt) {
 		visited[i][j][k][l] = true;
-		queue.add(new int[] { i, j, k, l });
+		queue.add(new int[] { i, j, k, l, mvCnt });
 
-		while (queue.isEmpty()) {
+		while (!queue.isEmpty()) {
 			int[] curPos = queue.poll();
 
 			for (int a = 0; a < 4; a++) {
@@ -66,48 +66,64 @@ public class Main {
 				int ry = curPos[1];
 				int bx = curPos[2];
 				int by = curPos[3];
-				boolean isBlueOut = false;
+				int cnt = curPos[4];
 
-				// TODO move and logic
-				// x move
-				boolean rxFlag = false;
-				boolean bxFlag = false;
-				while (dx[a] != 0) {
-					// red
-					if (rx + dx[a] > -1 && rx + dx[a] < n) { // inmap check
-						if (board[rx + dx[a]][ry] == '.') {
-							// bx check
-							if (rx + dx[a] != bx && ry != rx) {
-								rx = rx + dx[a];
-							} else {
-								if (board[bx + dx[a]][by] == '.') {
-									rx = rx + dx[a];
-								} else {
-									rxFlag = true; // red stop
-								}
-							}
+				// move and logic
+				boolean isRxMove = false;
+				boolean isBxMove = false;
+				boolean isRxGoal = false;
+				boolean isBxGoal = false;
 
-						} else if (board[rx + dx[a]][ry] == 'O') {
-							// TODO
+				while (!isRxMove || !isBxMove) {
+					int tempRx = rx + dx[a];
+					int tempBx = bx + dx[a];
+					int tempRy = ry + dy[a];
+					int tempBy = by + dy[a];
+
+					// Red move Logic
+					if (board[tempRx][tempRy] != '#') {
+						if (board[tempRx][tempRy] == 'O') {
+							// search end
+							isRxGoal = true;
+						} else if ((tempRx == bx && tempRy == by) && board[tempBx][tempBy] != '.') {
+							isRxMove = true;
 						} else {
-							rxFlag = true; // red stop
+							// move
+							rx = tempRx;
+							ry = tempRy;
 						}
 					} else {
-						rxFlag = true;
+						isRxMove = true;
 					}
 
-					// blue
-					if (bx + dx[a] > -1 && bx + dx[a] < n) {
-						if (board[bx + dx[a]][by] == '.') {
-							// rx check
-						} else if (board[bx + dx[a]][by] == 'O') {
-							// TODO
+					// Blue move Logic
+					if (board[tempBx][tempBy] != '#') {
+						if (board[tempBx][tempBy] == 'O') {
+							// can't move
+							isBxGoal = true;
+							break;
+						} else if ((tempBx == rx && tempBy == ry && !isRxGoal) && board[tempRx][tempRy] != '.') {
+							isBxMove = true;
 						} else {
-							bxFlag = true;
+							// move
+							bx = tempBx;
+							by = tempBy;
 						}
 					} else {
-						bxFlag = true;
+						isBxMove = true;
 					}
+
+				}
+
+				// move after
+
+				if (isRxGoal && !isBxGoal) {
+					return cnt + 1;
+				} else if (isBxGoal) {
+					// pass
+				} else if (!visited[rx][ry][bx][by]) {
+					visited[rx][ry][bx][by] = true;
+					queue.add(new int[] { rx, ry, bx, by, cnt + 1 });
 				}
 
 			}
