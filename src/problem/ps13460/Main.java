@@ -79,12 +79,15 @@ public class Main {
 					int tempBx = bx + dx[a];
 					int tempRy = ry + dy[a];
 					int tempBy = by + dy[a];
+					
+					
 
 					// Red move Logic
 					if (board[tempRx][tempRy] != '#') {
 						if (board[tempRx][tempRy] == 'O') {
 							// search end
 							isRxGoal = true;
+							isRxMove = true;
 						} else if ((tempRx == bx && tempRy == by) && board[tempBx][tempBy] != '.') {
 							isRxMove = true;
 						} else {
@@ -116,7 +119,6 @@ public class Main {
 				}
 
 				// move after
-
 				if (isRxGoal && !isBxGoal) {
 					return cnt + 1;
 				} else if (isBxGoal) {
