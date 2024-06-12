@@ -79,8 +79,6 @@ public class Main {
 					int tempBx = bx + dx[a];
 					int tempRy = ry + dy[a];
 					int tempBy = by + dy[a];
-					
-					
 
 					// Red move Logic
 					if (board[tempRx][tempRy] != '#') {
@@ -125,7 +123,8 @@ public class Main {
 					// pass
 				} else if (!visited[rx][ry][bx][by]) {
 					visited[rx][ry][bx][by] = true;
-					queue.add(new int[] { rx, ry, bx, by, cnt + 1 });
+					if (cnt + 1 < 10)	//limit move count 10
+						queue.add(new int[] { rx, ry, bx, by, cnt + 1 });
 				}
 
 			}
