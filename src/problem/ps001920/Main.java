@@ -1,4 +1,4 @@
-package problem.ps1920;
+package problem.ps001920;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

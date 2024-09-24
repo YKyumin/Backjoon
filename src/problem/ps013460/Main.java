@@ -1,4 +1,4 @@
-package problem.ps13460;
+package problem.ps013460;
 
 import java.util.Queue;
 import java.util.Scanner;

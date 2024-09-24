@@ -1,4 +1,4 @@
-package problem.ps2178;
+package problem.ps002178;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

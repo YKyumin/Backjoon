@@ -1,4 +1,4 @@
-package problem.ps1018;
+package problem.ps001018;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package problem.ps11724;
+package problem.ps011724;
 
 import java.io.BufferedReader;
 import java.io.IOException;
