@@ -1,0 +1,78 @@
+KCPC에 등장할 알고리즘 맞히기
+시간 제한	메모리 제한	제출	정답	맞힌 사람	정답 비율
+1 초	1024 MB	281	168	148	67.580%
+문제
+KCPC에 참가하게 된 당신은 빅데이터를 활용해 이번 대회에서 사용될 알고리즘을 예측하고자 한다.
+
+문제 번호와 문제에 달린 태그 개수, 그리고 태그 목록이 주어질 때, 가장 자주 등장한 태그를 출력하라.
+
+입력
+첫 번째 줄에 문제의 개수 
+$N( 1\leq N\leq 1\, 000 )$이 주어진다.
+
+두 번째 줄부터 
+$N$줄에 걸쳐 각 문제의 정보가 아래와 같은 형식으로 주어진다.
+
+ 
+$s$ 
+$t$ 
+$a_1$ 
+$a_2$ 
+$\cdots$ 
+$a_t$
+ 
+$s(1\, 000\leq s\leq 32\, 196)$는 문제 번호를 의미하는 정수이다.
+ 
+$t(1\leq t\leq 100)$는 문제에 달린 태그의 개수를 의미하는 정수이다.
+ 
+$a_i(1\leq\lvert a_i\rvert\leq 31)$는 
+$s$번 문제의 태그로, 알파벳 소문자와 _로 이루어진 문자열이다.
+각 문제에 달린 
+$t$개의 태그는 서로 중복되지 않는다.
+각 문제의 
+$s$가 증가하는 순서대로 주어지고, 
+$N$개의 문제는 모두 문제 번호가 다르다.
+
+출력
+첫 번째 줄에 가장 자주 등장한 태그를 출력한다. 가장 자주 등장한 태그가 여러 개일 경우, -1을 출력한다.
+
+예제 입력 1 
+6
+30701 2 greedy sorting
+30702 4 bfs dfs graphs graph_traversal
+30705 2 data_structures disjoint_set
+30706 2 geometry math
+30707 4 constructive graphs greedy mst
+30708 3 ad_hoc constructive greedy
+예제 출력 1 
+greedy
+greedy가 
+$3$번으로 가장 많이 등장하였다.
+
+예제 입력 2 
+6
+30701 2 greedy sorting
+30702 4 bfs dfs graphs graph_traversal
+30705 2 data_structures disjoint_set
+30706 2 geometry math
+30707 4 constructive graphs greedy mst
+30708 2 ad_hoc constructive
+예제 출력 2 
+-1
+greedy와 constructive와 graphs가 
+$2$번으로 가장 많이 등장하였다.
+
+노트
+채점 데이터는 실제 백준 온라인 저지 문제 및 솔브드 태그와 관련이 없을 수 있다.
+
+출처
+University > 고려대학교 > 2024 고려대학교 프로그래밍 경시대회 (KCPC) > 예비소집 B번
+
+문제를 검수한 사람: devluyten, edwardblue, eoaud0108, finimage, jinhan814, kevinlys00, kidw0124, lighter, rachel2003, tlsdydaud1, tmdghks
+문제를 만든 사람: yijw0930
+알고리즘 분류
+
+자료 구조
+문자열
+해시를 사용한 집합과 맵
+트리를 사용한 집합과 맵
