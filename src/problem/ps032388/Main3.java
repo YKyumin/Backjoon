@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Main3 {
 	final static int PLUG_IN = 1;
 	final static int PLUG_OFF = 0;
 	static int[] tree;
